@@ -3,7 +3,8 @@ Pipewire is required
 So install `postmarketos-base-ui-audio-pipewire`
 
 Create a file `/etc/pipewire/pipewire.conf.d/50-alsa-monitor.conf`
-```monitor.alsa.rules = [
+```
+monitor.alsa.rules = [
     {
         matches = [
             { node.name = "alsa_output.platform-sound.Speaker" }

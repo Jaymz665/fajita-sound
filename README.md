@@ -171,4 +171,45 @@ BootSequence [
 ]
 ```
 
+edit file `/usr/share/wireplumber/wireplumber.conf.d/51-qcom.conf`
+
+```
+{
+  "monitor.alsa.rules": [
+    {
+      "matches": [{"node.name": "~alsa_output*"}],
+      "actions": {
+        "update-props": {
+          "audio.format": "S16LE",
+          "audio.rate": 48000,
+          "api.alsa.period-size": 4096,
+          "api.alsa.period-num": 6,
+          "api.alsa.headroom": 512,
+          "session.suspend-timeout-seconds": 0,
+          "filter.graph": [
+            "highpass=f=2000",
+            "lowpass=f=18000"
+          ],
+          "audio.channels": 2,
+          "api.alsa.soft-mixer": true,
+          "api.alsa.multichannel": true
+        }
+      }
+    },
+    {
+      "matches": [{"node.name": "~alsa_input*"}],
+      "actions": {
+        "update-props": {
+          "audio.format": "S16LE",
+          "audio.rate": 48000,
+          "api.alsa.period-size": 4096,
+          "api.alsa.period-num": 6,
+          "api.alsa.headroom": 512
+        }
+      }
+    }
+  ]
+}
+```
+
 and remove `usr/share/alsa/ucm2/OnePlus/fajita/VoiceCall.conf`

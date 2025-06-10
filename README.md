@@ -88,7 +88,7 @@ SectionDevice."Speaker" {
         cset "name='QUAT_MI2S_RX Audio Mixer MultiMedia3' 0"
     ]
     Value {
-        PlaybackPriority 300
+        PlaybackPriority 200
         PlaybackPCM "hw:${CardId},2"
     }
 }
@@ -106,7 +106,7 @@ SectionDevice."Earpiece" {
         cset "name='RX INT0_1 MIX1 INP0' ZERO"
     ]
     Value {
-        PlaybackPriority 200  # Increased from 100 for call priority
+        PlaybackPriority 100
         PlaybackPCM "hw:${CardId},0"
         PlaybackVolume "RX0 Digital Volume"
     }

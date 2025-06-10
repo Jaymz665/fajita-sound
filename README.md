@@ -26,7 +26,8 @@ monitor.alsa.rules = [
 
 Edit file `/usr/share/alsa/ucm2/OnePlus/fajita/HiFi.conf`
 
-```# Modified HiFi use case configuration for OnePlus 6T (fajita) with call support
+```
+# Modified HiFi use case configuration for OnePlus 6T (fajita) with call support
 SectionVerb {
     EnableSequence [
         # Playback paths
@@ -150,7 +151,8 @@ SectionDevice."Mic2" {
 
 Edit file `/usr/share/alsa/ucm2/OnePlus/fajita/fajita.conf`
 
-```Syntax 4
+```
+Syntax 4
 
 SectionUseCase."HiFi" {
     File "/OnePlus/fajita/HiFi.conf"

@@ -1,6 +1,6 @@
-Pipewire is required
+Tested on OpenRC
 
-So install `postmarketos-base-ui-audio-pipewire`
+Pipewire is required, so install `postmarketos-base-ui-audio-pipewire`
 
 Create a file `/etc/pipewire/pipewire.conf.d/50-alsa-monitor.conf`
 ```
@@ -176,7 +176,7 @@ BootSequence [
 ]
 ```
 
-edit file `/usr/share/wireplumber/wireplumber.conf.d/51-qcom.conf`
+Edit file `/usr/share/wireplumber/wireplumber.conf.d/51-qcom.conf`
 
 ```
   "monitor.alsa.rules": [
@@ -214,4 +214,4 @@ edit file `/usr/share/wireplumber/wireplumber.conf.d/51-qcom.conf`
 }
 ```
 
-and remove `usr/share/alsa/ucm2/OnePlus/fajita/VoiceCall.conf`
+And remove `usr/share/alsa/ucm2/OnePlus/fajita/VoiceCall.conf`

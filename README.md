@@ -176,7 +176,7 @@ BootSequence [
 ]
 ```
 
-Edit file `/usr/share/wireplumber/wireplumber.conf.d/51-qcom.conf`
+Edit file `/usr/share/wireplumber/wireplumber.conf.d/51-qcom-sdm845.conf`
 
 ```
   "monitor.alsa.rules": [

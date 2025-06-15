@@ -197,37 +197,30 @@ If v24.12
 ```
   "monitor.alsa.rules": [
     {
-      "matches": [{"node.name": "~alsa_output*"}],
+      "matches": [{"node.name": "~alsa_output.*"}],
       "actions": {
         "update-props": {
-          "audio.format": "S16LE",
+          "audio.format": "FLOAT32LE",
           "audio.rate": 48000,
           "api.alsa.period-size": 1024,
-          "api.alsa.period-num": 6,
-          "api.alsa.headroom": 512,
-          "audio.quantum": 1024,
-          "clock.quantum-limit": 4096,
-          "session.suspend-timeout-seconds": 0,
-          "audio.channels": 2,
-          "api.alsa.soft-mixer": true,
-          "api.alsa.multichannel": true
+          "api.alsa.period-num": 16,
+          "api.alsa.headroom": 8192,
+          "api.alsa.disable-mmap": false,
+          "api.alsa.use-tsched": false,
+          "session.suspend-timeout-seconds": 0
         }
       }
     },
     {
-      "matches": [{"node.name": "~alsa_input*"}],
+      "matches": [{"node.name": "~alsa_input.*"}],
       "actions": {
         "update-props": {
-          "audio.format": "S16LE",
-          "audio.rate": 48000,
-          "api.alsa.period-size": 1024,
-          "api.alsa.period-num": 6,
-          "api.alsa.headroom": 512
+          "audio.format": "S16LE"
+          "audio.rate": 48000
         }
       }
     }
   ]
-}
 ```
 
 And remove `usr/share/alsa/ucm2/OnePlus/fajita/VoiceCall.conf`

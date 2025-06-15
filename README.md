@@ -4,32 +4,25 @@ Pipewire is required, so install `postmarketos-base-ui-audio-pipewire`
 
 Create a file `/etc/pipewire/pipewire.conf.d/50-alsa-monitor.conf`
 ```
-"monitor.alsa.rules": [
+# Объединяем Speaker и Earpiece в одно устройство
+monitor.alsa.rules = [
     {
-      "matches": [{"node.name": "~alsa_output.*"}],
-      "actions": {
-        "update-props": {
-          "audio.format": "FLOAT32LE",
-          "audio.rate": 48000,
-          "api.alsa.period-size": 1024,
-          "api.alsa.period-num": 16,
-          "api.alsa.headroom": 8192,
-          "api.alsa.disable-mmap": false,
-          "api.alsa.use-tsched": false,
-          "session.suspend-timeout-seconds": 0
+        matches = [
+            { node.name = "alsa_output.platform-sound.Speaker" }
+            { node.name = "alsa_output.platform-sound.Earpiece" }
+        ]
+        actions = {
+            create-mix = {
+                name = "combined-output"
+                description = "Speaker + Earpiece"
+                # Можно регулировать громкость каждого устройства
+                mix.props = {
+                    "audio.position" = [ FL FR ]
+                }
+            }
         }
-      }
-    },
-    {
-      "matches": [{"node.name": "~alsa_input.*"}],
-      "actions": {
-        "update-props": {
-          "audio.format": "S16LE"
-          "audio.rate": 48000
-        }
-      }
     }
-  ]
+]
 ```
 
 Edit file `/usr/share/alsa/ucm2/OnePlus/fajita/HiFi.conf`

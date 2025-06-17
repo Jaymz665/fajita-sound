@@ -193,10 +193,10 @@ If v24.12
       "matches": [{"node.name": "~alsa_output.*"}],
       "actions": {
         "update-props": {
-          "audio.format": "FLOAT32LE",
+          "audio.format": "S16LE",
           "audio.rate": 48000,
           "api.alsa.period-size": 1024,
-          "api.alsa.period-num": 16,
+          "api.alsa.period-num": 12,
           "api.alsa.headroom": 8192,
           "api.alsa.disable-mmap": false,
           "api.alsa.use-tsched": false,

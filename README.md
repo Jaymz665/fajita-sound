@@ -2,28 +2,6 @@ Tested on OpenRC
 
 Pipewire is required, so install `postmarketos-base-ui-audio-pipewire`
 
-Create a file `/etc/pipewire/pipewire.conf.d/50-alsa-monitor.conf`
-```
-# Объединяем Speaker и Earpiece в одно устройство
-monitor.alsa.rules = [
-    {
-        matches = [
-            { node.name = "alsa_output.platform-sound.Speaker" }
-            { node.name = "alsa_output.platform-sound.Earpiece" }
-        ]
-        actions = {
-            create-mix = {
-                name = "combined-output"
-                description = "Speaker + Earpiece"
-                # Можно регулировать громкость каждого устройства
-                mix.props = {
-                    "audio.position" = [ FL FR ]
-                }
-            }
-        }
-    }
-]
-```
 
 Edit file `/usr/share/alsa/ucm2/OnePlus/fajita/HiFi.conf`
 

@@ -194,4 +194,4 @@ If v24.12
   ]
 ```
 
-And remove `usr/share/alsa/ucm2/OnePlus/fajita/VoiceCall.conf`
+And remove `/usr/share/alsa/ucm2/OnePlus/fajita/VoiceCall.conf`

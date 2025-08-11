@@ -1,3 +1,8 @@
+It's been unstable lately and Eearpice may go into suspend (it's not clear what to do about it yet, [pulseaudio](https://github.com/Jaymz665/fajita-sound/blob/main/pulseaudio%20(openrc%20%7C%20systemd).md) looks more stable)
+
+
+In general, this works on systemd, but you need to try to select values in 51-qcom-sdm845.conf.
+
 Pipewire is required, so install `postmarketos-base-ui-audio-pipewire`
 
 

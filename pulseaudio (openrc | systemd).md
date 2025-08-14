@@ -128,7 +128,6 @@ SectionDevice."Mic2" {
 
 Edit file `/usr/share/alsa/ucm2/OnePlus/fajita/fajita.conf`
 
-```
 Syntax 4
 
 SectionUseCase."HiFi" {

@@ -1,6 +1,5 @@
 Pulseaudio is required, so install `postmarketos-base-ui-audio-pulseaudio`
 
-
 Edit file `/usr/share/alsa/ucm2/OnePlus/fajita/HiFi.conf`
 
 ```

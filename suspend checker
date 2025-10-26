@@ -1,0 +1,43 @@
+#!/bin/bash
+
+CHECK_INTERVAL=30  
+LOOPBACK_DURATION=0.5  
+
+check_and_activate_sinks() {
+    local suspend_sinks=()
+    local sink_info=$(pactl list sinks | grep -e "State" -e "Name")
+    
+    while IFS= read -r line; do
+        if [[ $line == *"State: SUSPEND"* ]]; then
+            read -r next_line
+            if [[ $next_line == *"Name:"* ]]; then
+                sink_name=$(echo "$next_line" | awk '{print $2}')
+                suspend_sinks+=("$sink_name")
+            fi
+        fi
+    done <<< "$sink_info"
+
+    if [ ${#suspend_sinks[@]} -gt 0 ]; then
+        echo "$(date '+%H:%M:%S') - Активирую ${#suspend_sinks[@]} устройств"
+        
+        for sink in "${suspend_sinks[@]}"; do
+            echo "$(date '+%H:%M:%S') - Обрабатываю: $sink"
+            
+            pactl set-sink-mute "$sink" 0
+            pactl set-sink-volume "$sink" 50%
+            
+            pw-loopback -n "wakeup-$sink" --capture-props='media.class=Audio/Source' --playback-props="node.target=$sink" &
+            local pid=$!
+            
+            sleep $LOOPBACK_DURATION
+            kill $pid 2>/dev/null
+        done
+    else
+        echo "$(date '+%H:%M:%S') - Все устройства активны"
+    fi
+}
+
+while true; do
+    check_and_activate_sinks
+    sleep $CHECK_INTERVAL
+done

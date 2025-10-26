@@ -189,7 +189,7 @@ If v24.12
       "matches": [{"node.name": "~alsa_input.*"}],
       "actions": {
         "update-props": {
-          "audio.format": "S16LE"
+          "audio.format": "S16LE",
           "audio.rate": 48000
         }
       }

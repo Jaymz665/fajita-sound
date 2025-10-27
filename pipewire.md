@@ -169,18 +169,49 @@ If v24.12
 `/usr/share/wireplumber/wireplumber.conf.d/51-qcom-sdm845.conf`
 
 ```
+{
   "monitor.alsa.rules": [
     {
-      "matches": [{"node.name": "~alsa_output.*"}],
+      "matches": [{"node.name": "alsa_output.platform-sound.Voice_Call__Earpiece__sink"}],
       "actions": {
         "update-props": {
           "audio.format": "S16LE",
           "audio.rate": 48000,
           "api.alsa.period-size": 1024,
-          "api.alsa.period-num": 12,
-          "api.alsa.headroom": 16384,
+          "api.alsa.period-num": 8,
+          "api.alsa.headroom": 4096,
+          "api.alsa.disable-batch-mode": true,
+          "api.alsa.use-chmap": false,
           "api.alsa.disable-mmap": false,
-          "api.alsa.use-tsched": false,
+          "session.suspend-timeout-seconds": 0
+        }
+      }
+    },
+    {
+      "matches": [{"node.name": "alsa_output.platform-sound.HiFi__Speaker__sink"}],
+      "actions": {
+        "update-props": {
+          "audio.format": "S16LE",
+          "audio.rate": 48000,
+          "api.alsa.period-size": 2048,
+          "api.alsa.period-num": 12,
+          "api.alsa.headroom": 8192,
+          "session.suspend-timeout-seconds": 0
+        }
+      }
+    },
+    {
+      "matches": [{"node.name": "alsa_output.platform-sound.HiFi__Earpiece__sink"}],
+      "actions": {
+        "update-props": {
+          "audio.format": "S16LE",
+          "audio.rate": 48000,
+          "api.alsa.period-size": 1024,
+          "api.alsa.period-num": 8,
+          "api.alsa.headroom": 4096,
+          "api.alsa.disable-batch-mode": true,
+          "api.alsa.use-chmap": false,
+          "api.alsa.disable-mmap": false,
           "session.suspend-timeout-seconds": 0
         }
       }
@@ -195,6 +226,7 @@ If v24.12
       }
     }
   ]
+}
 ```
 
 And remove `/usr/share/alsa/ucm2/OnePlus/fajita/VoiceCall.conf`

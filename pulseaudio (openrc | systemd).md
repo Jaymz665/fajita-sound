@@ -35,6 +35,7 @@ dbus-monitor --system "type='signal',interface='$interface',member='$member'" |
 
                                 sleep 1
                                 pactl set-default-sink alsa_output.platform-sound.HiFi__Speaker__sink
+                                pactl set-sink-volume @DEFAULT_SINK@ 90%
                         fi
                 fi
         done &
